@@ -1,0 +1,169 @@
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+void menu_utama(pilihan);
+
+
+int main (void){
+	struct tm *Sys_T;
+	time_t Tval;
+	Tval = time(NULL);
+	Sys_T = localtime(&Tval);
+	int tanggal_bayar = Sys_T->tm_mday;    // untuk menginputkan waktu tanggal secara automatis dari waktu lokal komputer
+	int bulan_bayar = Sys_T->tm_mon+1;     // untuk menginputkan bulan secara automatis dari waktu lokal komputer, ditambah 1 karena inputan di bulan januari dimulai dari 0
+	int tahun_bayar = 1900+Sys_T->tm_year; // untuk menginputkan tahun secara automatis dari waktu lokal komputer (ditambah 1900 karena hitungan tahun dimulai dari 1900)
+	int hari_bayar = Sys_T->tm_wday ;      // untuk menginputkan hari ke berapa pada minggu secara otomatis dari waktu lokal komputer 
+	char hari [6];
+	char bulan [9];
+	char nama [50];
+	int jumlah_orang;
+	int tanggal_pemesanan;
+	int bulan_pemesanan;
+	int tahun_pemesanan;
+	int pilihan;
+	int pesan;
+	
+	
+	switch (hari_bayar) {  //menerjemah inputan hari otomatis dalam bentuk integer (1-6) menjadi namanya dalam bentuk string yang disimpan dalam array of char hari
+	case 0: strcpy (hari, "Minggu" );
+		break;
+	case 1: strcpy (hari, "Senin" );
+		break;
+	case 2: strcpy (hari, "Selasa" );
+		break;
+	case 3: strcpy (hari, "Rabu" );
+		break;
+	case 4: strcpy (hari, "kamis" );
+		break;
+	case 5: strcpy (hari, "Jumat" );
+		break;
+	case 6: strcpy (hari, "Sabtu" );
+}
+
+switch (bulan_bayar) { //menerjemah inputan bulan otomatis dalam bentuk integer (1-12) menjadi namanya dalam bentuk string yang disimpan dalam array of char bulan
+	case 1: strcpy (bulan, "Januari" );
+		break;
+	case 2: strcpy (bulan, "Februari" );
+		break;
+	case 3: strcpy (bulan, "Maret" );
+		break;
+	case 4: strcpy (bulan, "April" );
+		break;
+	case 5: strcpy (bulan, "Mei" );
+		break;
+	case 6: strcpy (bulan, "Juni" );
+		break;
+	case 7: strcpy (bulan, "Juli" );
+		break;
+	case 8: strcpy (bulan, "Agustus" );
+		break;
+	case 9: strcpy (bulan, "September" );
+		break;
+	case 10: strcpy (bulan, "Oktober" );
+		break;
+	case 11: strcpy (bulan, "November" );
+		break;
+	case 12: strcpy (bulan, "Desember" );
+	}
+	
+	printf("======================================================================\n");
+	printf("                           MENU UTAMA\n");
+	printf("======================================================================\n\n");
+	
+	printf("-------------------------------------------------------------------------\n");
+	printf("| Kode Paket |              Nama Paket              |     Harga	        |\n");
+	printf("-------------------------------------------------------------------------\n");
+	printf("|     1      |	    Paket Barat Nusa Penida         |Rp 350.000/orang   |\n");
+	printf("|     2      |      Paket Timur Nusa Penida         |Rp 350.000/orang   |\n");
+	printf("|     3      |   Paket Barat dan Timur Nusa Penida  |Rp 625.000/orang   |\n");
+	printf("|     4      |           Paket Snorkling            |Rp 400.000/orang   |\n");
+	printf("|     5      |	  Paket Tirta Yatra Nusa Penida     |Rp 450.000/orang   |\n");
+	printf("-------------------------------------------------------------------------\n");	
+	
+	pilihan:
+	printf("Pilih Paket Yang Diinginkan (1-5)??\n");
+	scanf("%d", &pilihan);
+
+	switch (pilihan){
+		case 1 :
+			printf("====================================================================\n");
+			printf ("                     Paket Barat Nusa Penida\n");
+			printf("====================================================================\n");
+			printf("Objek Wisata:\n");
+			printf("a. Kelingking Beach\n");
+			printf("b. Broken Beach\n");
+			printf("c. Angel's Billabong\n");
+			printf("d. Cristal Bay\n\n");
+			break;
+		case 2 : 
+			printf("====================================================================\n");
+			printf ("                     Paket Timur Nusa Penida\n");
+			printf("====================================================================\n");
+			printf("Objek Wisata:\n");
+			printf("a. Diamond Beach\n");
+			printf("b. Atuh Beach\n");
+			printf("c. Pulau Seribu/Raja Lima\n");
+			printf("d. Bukit Telletubies\n\n");
+			break;
+		case 3 :
+			printf("====================================================================\n");
+			printf ("                     Paket Barat dan Timur Nusa Penida\n");
+			printf("====================================================================\n");
+			printf("Objek Wisata:\n");
+			printf("a. Kelingking Beach\n");
+			printf("b. Broken Beach\n");
+			printf("c. Angel's Billabong\n");
+			printf("d. Cristal Bay");
+			printf("e. Diamond Beach\n");
+			printf("f. Atuh Beach\n");
+			printf("g. Pulau Seribu/Raja Lima\n");
+			printf("h. Bukit Telletubies\n\n");
+			break;
+		case 4 : 
+			printf("====================================================================\n");
+			printf ("                     Paket Snorkling\n");
+			printf("====================================================================\n");
+			printf("Spot Snorkling:\n");
+			printf("a. Wall Point\n");
+			printf("b. Jetty Point\n");
+			printf("c. Manta Point\n");
+			printf("d. Gamat Bay\n\n");
+			break;
+		case 5 : 
+			printf("====================================================================\n");
+			printf ("                     Paket Tirta Yatra\n");
+			printf("====================================================================\n");
+			printf("Pura Tujuan:\n");
+			printf("a. Pura Mobil\n");
+			printf("b. Pura Ped\n");
+			printf("c. Pura Puncak Mundi\n");
+			printf("d. Pura Giri Putri\n\n");
+			break;
+		default :
+			printf("Mohon Hanya Masukkan Antara Angka 1-5!\n\n\n");
+			goto pilihan;
+	}
+	
+	printf("----------------------------------------------------------------\n");
+	printf("Pilih 1 Untuk Pesan\n");
+	printf("Pilih 2 Untuk Kembali\n\n");
+	scanf("%d", &pesan);
+	
+	switch (pesan){
+		case 1 :
+			printf("----------------------------------------------------------------\n");
+			printf("Nama Pemesan     : ");
+			scanf("%s", &nama);
+			printf("Jumlah Orang     : ");
+			scanf("%d", &jumlah_orang);
+			printf("Tanggal Pemesanan: ");
+			scanf("%d", &tanggal_pemesanan);
+			printf("Bulan Pemesanan  : ");
+			scanf("%d", &bulan_pemesanan);
+			printf("Tahun Pemesanan  : ");
+			scanf("%d", &tahun_pemesanan);
+			
+	}
+	
+}
